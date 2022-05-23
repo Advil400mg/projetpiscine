@@ -11,7 +11,7 @@
         <img class="logo" src="img/logo.jpg" width = "120px" height = "48px" alt="logo">
         <nav>
             <ul class = "menu">
-                <li><a href="">Accueil</a></li>
+                <li><a href="index.php">Accueil</a></li>
                 <li><a href="">Tout Parcourir</a></li>
                 <li><a href="">Recherche</a></li>
                 <li><a href="">Rendez-vous</a></li>
@@ -20,7 +20,7 @@
         </nav>
         <div>
             <a class="signin" href=""><button>Sign In</button></a>
-            <a class="signup" href=""><button>Sign Up</button></a>
+            <a class="signup" href="signup.php"><button>Sign Up</button></a>
         </div>
             
         
