@@ -14,9 +14,9 @@
 <div class="main-content">
 
     <div class="left box">
-        <h2>About us</h2>
+        <h2>À propos de nous</h2>
         <div class="content">
-            <p>Bla bla bla </p>
+            <p>Omnes Sante est un site français  qui propose un logiciel de gestion des rendez-vous et des services aux patients pour les professionnels de santé et un service de prise de rendez-vous en ligne.</p>
             <div class="social">
                 <a href="#"><span class="fab fa-facebook-f"></span></a>
                 <a href="#"><span class="fab fa-twitter"></span></a>
@@ -27,7 +27,7 @@
     </div>  
 
     <div class="center box">
-        <h2>Address</h2>
+        <h2>Coordonnées</h2>
         <div class="content">
             <div class="place">
                 <span class="fas fa-map-marker-alt"></span>
@@ -45,7 +45,7 @@
     </div>
 
     <div class="right box">
-        <h2>Contact us</h2>
+        <h2>Contactez-nous</h2>
         <div class="content">
             <form action="#">
                 <div class="email">
@@ -64,6 +64,11 @@
     </div>
 
 </div>  
+<div class="bottom">
+    <center>
+        <span class"credit">Copyright © 2022 Omnes Santé, tous droits réservés.</span>
+    </center>
+</div>
 </footer>
 
 </body>
