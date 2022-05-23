@@ -19,7 +19,7 @@
             </ul>
         </nav>
         <div>
-            <a class="signin" href=""><button>Sign In</button></a>
+            <a class="signin" href="signin.php"><button>Sign In</button></a>
             <a class="signup" href="signup.php"><button>Sign Up</button></a>
         </div>
             

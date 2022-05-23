@@ -133,7 +133,7 @@ background: rgba(0, 136, 169, 1);
     }
 
 .center .content .fas{
-    front-size: 1.4375rem;
+    font-size: 1.4375rem;
     background: #1a1a1a;
     height: 45px;
     width: 45px;
@@ -148,7 +148,7 @@ background-color: rgba(0, 136, 169, 1);
 }
 
 .center .center .text{
-    front-size: 1.0625rem;
+    font-size: 1.0625rem;
     font-weight: 500;
     padding-left: 10px;
 }
@@ -157,7 +157,7 @@ background-color: rgba(0, 136, 169, 1);
 }
 
 .right form .text{
-    front-size: 1.0625rem;
+    font-size: 1.0625rem;
     margin-bottom: 2px;
     color: #656565;
 }
@@ -192,5 +192,30 @@ background-color: rgba(0, 136, 169, 1);
     background: #151515;
 }
 
-
-
+input
+{
+    background-color: #0087a93b;
+    width: 300px;
+    height: 40px;
+    margin: 3px;
+}
+.signin-form
+{ 
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: auto;
+    width: 19em
+}
+.signup-form
+{ 
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: auto;
+    width: 19em
+}
