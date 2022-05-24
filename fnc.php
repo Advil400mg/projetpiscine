@@ -91,13 +91,9 @@ function insertUser($conn, $name,$surname,$mail,$password, $usertype)
         exit();
     }
 
-    $options = [
-        'cost' => 12,
-    ];
-    $hash = password_hash($password, PASSWORD_BCRYPT, $options);
-    //$hash = password_hash($password, PASSWORD_DEFAULT);
+    $hash = password_hash($password, PASSWORD_DEFAULT);
 
-    mysqli_stmt_bind_param($stmt, "ssssi", $name,$surname,$mail,$hash, $usertype);
+    mysqli_stmt_bind_param($stmt, "ssssi", $name,$surname,$mail,$password, $usertype);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
@@ -119,6 +115,7 @@ function checkConnection($conn, $email, $password)
 
    $dbuserpassword = $info["password"];
    $check = password_verify($password, $dbuserpassword);
+   $check = $password == $dbuserpassword;
 
    if($check == true)
    {
