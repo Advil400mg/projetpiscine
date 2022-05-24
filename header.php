@@ -8,8 +8,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="headerstyle.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <title>Test hébergement</title>
+
 </head>
 <body>
     <header>
@@ -23,7 +25,7 @@
                 <?php
                     if(isset($_SESSION["userid"]))
                     {
-                        echo "<li><a href=''>Votre Compte</a></li>";
+                        echo "<li><a href='userprofile.php'>Votre Compte</a></li>";
                     }
                 ?>
             </ul>

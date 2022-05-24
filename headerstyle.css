@@ -1,0 +1,54 @@
+li, a, button{
+    font-family: "Akshar";
+    font-weight: 300;
+    font-size: 16px;
+    color: #edf0f1;
+    text-decoration: none;
+}
+
+
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+    height: auto;
+    position: fixed;
+    width: 100%;
+    top : 0;
+}
+
+.logo{
+    cursor: pointer;
+}
+
+.menu{
+    list-style: none;
+}
+
+.menu li{
+    display: inline-block;
+    padding: 0px 20px;
+}
+
+.menu li a{
+    transition: all 0.3s ease 0s;
+}
+
+.menu li a:hover{
+    color: #0088a9;
+}
+
+button{
+    padding: 9px 25px;
+    background-color: rgba(0, 136, 169, 1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+button:hover{
+    background-color: rgba(0, 136, 169, 0.6);
+}

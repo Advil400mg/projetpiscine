@@ -14,6 +14,8 @@
             <input type="text" name="mail" placeholder="Email adress...">
             <input type="password" name="password" placeholder="Password...">
             <input type="password" name="passwordrpt" placeholder="Repeat password...">
+            
+
             <button type="submit"name="submit">Submit</button>
         </form>
     
