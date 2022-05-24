@@ -8,7 +8,7 @@
     </div>
     <section class="signin-form">
         <form class="signin" action="signinphp.php" method="post">
-            <input type="text" name="mail" placeholder="Email adress..."><br>
+            <input type="email" name="mail" placeholder="Email adress..."><br>
             <input type="password" name="password" placeholder="Password...">
             <button type="submit"name="submit">Sign In</button>
         </form>

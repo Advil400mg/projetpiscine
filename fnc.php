@@ -123,6 +123,7 @@ function checkConnection($conn, $email, $password)
        $_SESSION["userid"] = $info["userid"];
        $_SESSION["name"] = $info["name"];
        $_SESSION["surname"] = $info["surname"];
+       $_SESSION["all_infos"] = $info;
        header("location: index.php");
        exit();
    }
