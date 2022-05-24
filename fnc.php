@@ -91,7 +91,11 @@ function insertUser($conn, $name,$surname,$mail,$password, $usertype)
         exit();
     }
 
-    $hash = password_hash($password, PASSWORD_DEFAULT);
+    $options = [
+        'cost' => 12,
+    ];
+    $hash = password_hash($password, PASSWORD_BCRYPT, $options);
+    //$hash = password_hash($password, PASSWORD_DEFAULT);
 
     mysqli_stmt_bind_param($stmt, "ssssi", $name,$surname,$mail,$hash, $usertype);
     mysqli_stmt_execute($stmt);
