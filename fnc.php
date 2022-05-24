@@ -1,6 +1,6 @@
 <?php
 
-function emptyForm($name,$surname,$mail,$password,$passwordrpt)
+function emptyFormSU($name,$surname,$mail,$password,$passwordrpt)
 {   
     $result;
     if(empty($name) || empty($surname) || empty($mail) || empty($password) || empty($passwordrpt)){
@@ -11,6 +11,19 @@ function emptyForm($name,$surname,$mail,$password,$passwordrpt)
     }
     return $result;
 }
+
+function emptyFormSI($mail,$password)
+{   
+    $result;
+    if(empty($mail) || empty($password)){
+        $result = true;
+    }
+    else{
+        $result = false;
+    }
+    return $result;
+}
+
 
 function checkMail($mail)
 {
@@ -46,7 +59,7 @@ function checkUser($conn, $mail)
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $qry))
     {
-        header("location: signup.php?error=stmtErrora");
+        header("location: signup.php?error=stmtError");
         exit();
     }
 
@@ -74,7 +87,7 @@ function insertUser($conn, $name,$surname,$mail,$password, $usertype)
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $qry))
     {
-        header("location: signup.php?error=stmtErrorb");
+        header("location: signup.php?error=stmtError");
         exit();
     }
 
@@ -88,4 +101,31 @@ function insertUser($conn, $name,$surname,$mail,$password, $usertype)
     exit();
 
     
+}
+
+function checkConnection($conn, $email, $password)
+{
+   $info = checkUser($conn, $email);
+   if($info == false)
+   {
+    header("location: signin.php?error=infoError");
+    exit();
+   }
+
+
+   $dbuserpassword = $info["password"];
+   $check = password_verify($password, $dbuserpassword);
+
+   if($check == true)
+   {
+       session_start();
+       $_SESSION["userid"] = $info["uderid"];
+       header("location: index.php");
+       exit();
+   }
+   else
+   {
+        header("location: signin.php?error=infoError".$password);
+        exit();
+   }
 }

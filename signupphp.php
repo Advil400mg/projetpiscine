@@ -13,7 +13,7 @@ if(isset($_POST["submit"]))
 
 
 
-    if(emptyForm($username,$surname,$mail,$password,$passwordrpt) !== false)
+    if(emptyFormSU($username,$surname,$mail,$password,$passwordrpt) !== false)
     {
         header("location: signup.php?error=emptyInput");
         exit();

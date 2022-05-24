@@ -16,7 +16,18 @@
             <input type="password" name="passwordrpt" placeholder="Repeat password...">
             <button type="submit"name="submit">Submit</button>
         </form>
-    </section>
+    
+
+<?php
+if(isset($_GET["error"]))
+{
+    if($_GET["error"] == "none")
+    {
+        echo("<p>You have signed up successfully</p>");
+    }
+}
+?>
+</section>
 </div>
 <?php
     include_once "footer.php"; 
