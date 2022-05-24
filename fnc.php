@@ -120,7 +120,9 @@ function checkConnection($conn, $email, $password)
    if($check == true)
    {
        session_start();
-       $_SESSION["userid"] = $info["uderid"];
+       $_SESSION["userid"] = $info["userid"];
+       $_SESSION["name"] = $info["name"];
+       $_SESSION["surname"] = $info["surname"];
        header("location: index.php");
        exit();
    }
