@@ -8,7 +8,7 @@
     </div>
     <section class="update-user-forms">
         <section class="update1-user-form">
-            <form class="signin" action="signinphp.php" method="post">
+            <form class="signin" action="userprofilephp.php" method="post">
                 <?php
                     $infos = $_SESSION['all_infos'];
                     if(!empty($infos['adress1']))
@@ -73,10 +73,10 @@
         </section><br>
 
         <section class="update-user-password-form">
-            <form class="signin" action="signinphp.php" method="post">
-                <input type='text' name='adress1' placeholder='Adress...'><br>
-                <input type='password' name='adress2' placeholder='Adress...'><br>
-                <button type="submit"name="update">Change password</button>
+            <form class="signin" action="userprofilephp.php" method="post">
+                <input type='password' name='newpassword' placeholder='New password...'><br>
+                <input type='password' name='password' placeholder='Current password...'><br>
+                <button type="submit"name="updatepwd">Change password</button>
             </form>
         </section>
     </section>
