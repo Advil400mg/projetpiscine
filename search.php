@@ -34,13 +34,15 @@
         if($data !== false)
         {
             
-            echo "<br><table border='1px'>";
+            echo "<br><table class='blueTable' >";
+            echo "<thead>";
             echo "<tr>";
             echo "<td>Prenom</td>";
             echo "<td>Nom</td>";
             echo "<td>Specialité</td>";
             echo "<td>Voir fiche</td>";
             echo "</tr>";
+            echo "</thead><tbody>";
             while ($row = $data->fetch_assoc()) {
                 echo "<tr>";
                 echo "<td>".$row["name"]."</td>";
@@ -54,6 +56,7 @@
                 echo "</td>";
                 echo "</tr>";
             }
+            echo "</tbody>";
             echo "</table>";
             
             
