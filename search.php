@@ -1,5 +1,7 @@
 <?php
- include_once 'header.php';
+    ini_set('session.cache_limiter','public');
+    session_cache_limiter(false);
+    include_once 'header.php';
 
 ?>
 
@@ -33,8 +35,17 @@
         {
             
             echo "<br><table border='1px'>";
+            echo "<tr>";
+            echo "<td>Prenom</td>";
+            echo "<td>Nom</td>";
+            echo "<td>Specialité</td>";
+            echo "<td>Voir fiche</td>";
+            echo "</tr>";
             while ($row = $data->fetch_assoc()) {
                 echo "<tr>";
+                echo "<td>".$row["name"]."</td>";
+                echo "<td>".$row["surname"]."</td>";
+                echo "<td>".$row["specialite"]."</td>";
                 echo "<td>";
                 echo "<form method='POST' action = 'doctorprofile.php'>";
                 echo "<input type='hidden' name='id' value=".$row["userid"].">";

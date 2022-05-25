@@ -19,6 +19,7 @@
         <img class="logo" src="img/logo.jpg" width = "120px" height = "48px" alt="logo">
         <nav>
             <ul class = "menu">
+                <li><a href="ajoutmedecin.php">Medadd</a></li>
                 <li><a href="index.php">Accueil</a></li>
                 <li><a href="browser.php">Tout Parcourir</a></li>
                 <li><a href="search.php">Recherche</a></li>

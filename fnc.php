@@ -39,8 +39,8 @@ function emptyFormSI($mail,$password)
 
 function searchBar($conn, $recherche)
 {
-    $qry = 'SELECT * FROM user WHERE user.name LIKE "%'.$recherche.'%"';
-    $data = mysqli_query($conn, $qry);;
+    $qry = 'SELECT * FROM user INNER JOIN medecin ON user.userid = medecin.userid WHERE user.name LIKE "%'.$recherche.'%" OR  medecin.specialite LIKE "%'.$recherche.'%" OR user.surname LIKE "%'.$recherche.'%" ORDER BY user.surname';
+    $data = mysqli_query($conn, $qry);
     return $data;
 }
 
@@ -117,8 +117,41 @@ function insertUser($conn, $name,$surname,$mail,$password, $usertype)
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
-    header("location: signup.php?error=none");
+    if($usertype == 1)
+    {
+        header("location: signup.php?error=none");
+        exit();
+    }
+
+    
+}
+
+function insertMedecin($conn, $name,$surname,$mail,$password, $usertype, $specialite)
+{
+    insertUser($conn, $name,$surname,$mail,$password, $usertype);
+    $info = checkUser($conn, $mail);
+    if($info == false)
+    {
+        header("location: ajoutmedecin.php?error=yo");
+        exit();
+    }
+    $id = $info["userid"];
+
+    $qry = "INSERT INTO medecin (medecin.medecinid, medecin.specialite, medecin.userid) VALUES(UUID(),?,?)";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $qry))
+    {
+        header("location: ajoutmedecin.php?error=stmtError");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "ss", $specialite, $id);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+    header("location: ajoutmedecin.php?error=none,");
     exit();
+    
 }
 
 function updateSession($conn)
