@@ -6,10 +6,10 @@
         <div class="content">
             <p>Omnes Sante est un site français  qui propose un logiciel de gestion des rendez-vous et des services aux patients pour les professionnels de santé et un service de prise de rendez-vous en ligne.</p>
             <div class="social">
-                <a href="#"><span class="fab fa-facebook-f"></span></a>
-                <a href="#"><span class="fab fa-twitter"></span></a>
-                <a href="#"><span class="fab fa-instagram"></span></a>
-                <a href="#"><span class="fab fa-youtube"></span></a>
+                <a href="https://www.facebook.com"><span class="fab fa-facebook-f"></span></a>
+                <a href="https://www.twitter.com"><span class="fab fa-twitter"></span></a>
+                <a href="https://www.instagram.com"><span class="fab fa-instagram"></span></a>
+                <a href="https://www.youtube.com"><span class="fab fa-youtube"></span></a>
             </div>
         </div>    
     </div>  
@@ -22,12 +22,12 @@
                 <span class="text">43 Quai de Grenelle, 75015 Paris</span>
              </div>
             <div class="phone">
-                <span class="fas fa-phone-alt"></span>
-                <span class="text">01 47 20 75 82</span>
+            <a href="tel: 01 47 20 75 82"><span class="fas fa-phone-alt"></span></a>
+            <a href="tel: 01 47 20 75 82"><span class="text">01 47 20 75 82</span></a>
             </div>
             <div class="email">
-                <span class="fas fa-envelope"></span>
-                <span class="text">contact@omnessante.com</span>
+            <a href="mailto:contact@omnessante.com"><span class="fas fa-envelope"></span></a>
+            <a href="mailto:contact@omnessante.com"><span class="text">contact@omnessante.com</span></a>
             </div>
         </div>
     </div>

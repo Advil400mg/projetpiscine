@@ -21,7 +21,7 @@
             <ul class = "menu">
                 <li><a href="index.php">Accueil</a></li>
                 <li><a href="browser.php">Tout Parcourir</a></li>
-                <li><a href="">Recherche</a></li>
+                <li><a href="recherche.php">Recherche</a></li>
                 <li><a href="">Rendez-vous</a></li>
                 <?php
                     if(isset($_SESSION["userid"]))
