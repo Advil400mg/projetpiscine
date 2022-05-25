@@ -37,6 +37,13 @@ function emptyFormSI($mail,$password)
     return $result;
 }
 
+function searchBar($conn, $recherche)
+{
+    $qry = 'SELECT * FROM user WHERE user.name LIKE "%'.$recherche.'%"';
+    $data = mysqli_query($conn, $qry);;
+    return $data;
+}
+
 
 function checkMail($mail)
 {
@@ -130,7 +137,6 @@ function updateSession($conn)
 
 function updateUser($conn, $adress1, $adress2, $city, $ZIP, $country, $phone, $img)
 {
-    session_start();
     if(isset($_SESSION["userid"]))
     {
         $qry = "UPDATE user SET user.adress1 = ?, user.adress2 = ?, user.city = ?, user.ZIP = ?, user.country = ?, user.phone = ?, user.img = ? WHERE user.userid = ?";
@@ -140,8 +146,14 @@ function updateUser($conn, $adress1, $adress2, $city, $ZIP, $country, $phone, $i
             header("location: signup.php?error=stmtError");
             exit();
         }
+        $adress1 = str_replace(' ', '_',$adress1);
+        $adress2 = str_replace(' ', '_',$adress2); 
+        $city = str_replace(' ', '_',$city); 
+        $ZIP = str_replace(' ', '_',$ZIP);
+        $country = str_replace(' ', '_',$country);
+        $phone = str_replace(' ', '_',$phone);
 
-        mysqli_stmt_bind_param($stmt, "ssssssss", str_replace(' ', '_',$adress1), str_replace(' ', '_',$adress2), str_replace(' ', '_',$city), str_replace(' ', '_',$ZIP), str_replace(' ', '_',$country), str_replace(' ', '_',$phone), str_replace(' ', '_',$img), $_SESSION["userid"]);
+        mysqli_stmt_bind_param($stmt, "ssssssss",$adress1, $adress2, $city, $ZIP,$country, $phone, $img, $_SESSION["userid"]);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 

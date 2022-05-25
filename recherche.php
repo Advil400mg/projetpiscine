@@ -2,14 +2,7 @@
 <?php
  include_once 'header.php';
 
-$bdd = new PDO('mysql:host=localhost; dbname=examen;','root', '');
-$allusers =0;
-if(isset($_GET['s']) AND !empty($_GET['s']))
-{
-    $recherche = htmlspecialchars($_GET['s']);
-    $allusers = $bdd->query('SELECT * FROM unioneuropeenne WHERE Pays LIKE "%'.$recherche.'%" ORDER BY ID DESC');
-   
-}
+
 ?>
 
 
@@ -24,7 +17,7 @@ if(isset($_GET['s']) AND !empty($_GET['s']))
         <a class="rechercher" href=""><button>Rechercher</button></a>
 <!-- <a class="retour" href="header.php" onclick="index.php"><button>Retour</button></a> -->
 
-</center>
+        </center>
 </div>
 
 </form>
@@ -34,6 +27,14 @@ if(isset($_GET['s']) AND !empty($_GET['s']))
 
 
 <?php
+$bdd = new PDO('mysql:host=localhost; dbname=examen2022;','root', '');
+$allusers = 0;
+if(isset($_GET['s']) AND !empty($_GET['s']))
+{
+    $recherche = htmlspecialchars($_GET['s']);
+    $allusers = $bdd->query('SELECT * FROM unioneuropeenne WHERE Pays LIKE "%'.$recherche.'%" ORDER BY ID DESC');
+   
+}
 if(!empty($_GET['s']))
 {
 if($allusers->rowCount() > 0)
@@ -41,19 +42,18 @@ if($allusers->rowCount() > 0)
    
     while($users = $allusers->fetch())
     {
-        ?>
-        <center>
-        <p><?= $users['Pays']; ?></p>
-        </center>
-        <?php
+
+        echo "<center>";
+        echo "<p><?= ".$users['Pays']." ?></p>";
+        echo "</center>";
+
     }
 
 }else{
-    ?>
-    <center>
-    <p> Aucune recherche ne correspond </p>
-</center>
-    <?php
+
+    echo "<center>";
+    echo "<p> Aucune recherche ne correspond </p>";
+    echo "</center>";
 }
 
 }
@@ -67,16 +67,3 @@ if($allusers->rowCount() > 0)
 <?php
     include_once "footer.php"; 
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
