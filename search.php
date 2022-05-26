@@ -37,6 +37,7 @@
             echo "<br><table class='blueTable' >";
             echo "<thead>";
             echo "<tr>";
+            echo "<td></td>";
             echo "<td>Prenom</td>";
             echo "<td>Nom</td>";
             echo "<td>Specialité</td>";
@@ -45,6 +46,15 @@
             echo "</thead><tbody>";
             while ($row = $data->fetch_assoc()) {
                 echo "<tr>";
+                if(empty($row["img"]))
+                {
+                    echo "<td><img src='img/default-user.png' height='70px' width='70px'></td>";
+                }//border='1px solid #9FC6FF'
+                else
+                {
+                    echo "<td><img src='".$row['img']."' height='70px' width='70px' border='1px solid #9FC6FF' border-radius='20px 0'></td>";
+                }
+                
                 echo "<td>".$row["name"]."</td>";
                 echo "<td>".$row["surname"]."</td>";
                 echo "<td>".$row["specialite"]."</td>";

@@ -44,6 +44,27 @@ function searchBar($conn, $recherche)
     return $data;
 }
 
+function checkDoctor($conn, $doctorid)
+{
+    $qry = "SELECT * FROM user INNER JOIN medecin ON user.userid = medecin.userid WHERE user.userid='".$doctorid."'";
+    $data = mysqli_query($conn, $qry);
+    return $data;
+}
+
+function getDates($conn, $doctorid)
+{
+    $qry = "SELECT creneaux.date FROM creneaux INNER JOIN medecin ON creneaux.medecinid = medecin.medecinid WHERE medecin.medecinid='".$doctorid."' GROUP BY creneaux.date ORDER BY creneaux.date";
+    $data = mysqli_query($conn, $qry);
+    return $data;
+}
+
+function getHours($conn, $doctorid, $date)
+{
+    $qry = "SELECT creneaux.creneauid, creneaux.heuredebut, creneaux.taken FROM creneaux INNER JOIN medecin ON creneaux.medecinid = medecin.medecinid WHERE medecin.medecinid='".$doctorid."'AND creneaux.date = '".$date."' ORDER BY creneaux.heuredebut";
+    $data = mysqli_query($conn, $qry);
+    return $data;
+}
+
 
 function checkMail($mail)
 {
