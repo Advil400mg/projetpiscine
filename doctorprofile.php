@@ -61,10 +61,18 @@
                     </form>
                 </td>
                 <td>
-                    <form method="POST">
+                    <form method="POST" action="chatroom.php">
                         <?php
                             echo "<input type='hidden' name='id' value=".$doctoruserid.">";
-                            echo "<button class='btnmedecin' type='submit' name ='chat'>Chat</button>";
+                            if(isset($_SESSION["usertype"]) && $_SESSION["usertype"]==1)
+                            {
+                                echo "<button class='btnmedecin' type='submit' name ='chat'>Chat</button>";
+                            }
+                            else
+                            {
+                                echo "<button class='btnmedecin' type='submit' name ='chat' disabled>Chat</button>";
+                            }
+                            
                         ?>
                     </form>
                 </td>

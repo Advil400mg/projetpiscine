@@ -1,6 +1,6 @@
 <?php
-
-if(isset($_POST["medecin"]) && isset($_SESSION["userid"]))
+session_start();
+if(isset($_POST["medecin"]) && isset($_SESSION["userid"]) && $_SESSION["usertype"]==1)
 {
     require_once 'dbhandle.php';
     require_once 'fnc.php';

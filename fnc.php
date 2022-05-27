@@ -74,10 +74,25 @@ function getHours($conn, $doctorid, $date)
 
 function getRdvHours($conn, $doctorid, $date)
 {
-    $qry = "SELECT creneaux.creneauid, creneaux.heuredebut, creneaux.taken FROM creneaux INNER JOIN medecin ON creneaux.medecinid = medecin.medecinid INNER JOIN rdv ON creneaux.creneauid = rdv.creneauid WHERE medecin.medecinid='".$doctorid."'AND creneaux.date = '".$date."'AND rdv.userid = '".$_SESSION["userid"]."' ORDER BY creneaux.heuredebut";
+    if($_SESSION["usertype"] == 1)
+    {
+        $qry = "SELECT creneaux.creneauid, creneaux.heuredebut, creneaux.taken FROM creneaux INNER JOIN medecin ON creneaux.medecinid = medecin.medecinid INNER JOIN rdv ON creneaux.creneauid = rdv.creneauid WHERE medecin.medecinid='".$doctorid."'AND creneaux.date = '".$date."'AND rdv.userid = '".$_SESSION["userid"]."' ORDER BY creneaux.heuredebut";
+    }
+    else
+    {
+        $qry = "SELECT * FROM creneaux INNER JOIN medecin ON creneaux.medecinid = medecin.medecinid INNER JOIN rdv ON creneaux.creneauid = rdv.creneauid INNER JOIN user ON rdv.userid = user.userid WHERE medecin.medecinid='".$doctorid."'AND creneaux.date = '".$date."' ORDER BY creneaux.heuredebut";
+    }
+        $data = mysqli_query($conn, $qry);
+    return $data;
+}
+
+function getMedecinId($conn)
+{
+    $qry = "SELECT medecin.medecinid FROM medecin INNER JOIN user ON medecin.userid = user.userid WHERE medecin.userid='".$_SESSION["userid"]."'";
     $data = mysqli_query($conn, $qry);
     return $data;
 }
+
 
 
 function checkMail($mail)
