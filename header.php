@@ -25,10 +25,11 @@
                 <li><a href="index.php">Accueil</a></li>
                 <li><a href="browser.php">Tout Parcourir</a></li>
                 <li><a href="search.php">Recherche</a></li>
-                <li><a href="">Rendez-vous</a></li>
+                
                 <?php
                     if(isset($_SESSION["userid"]))
                     {
+                        echo "<li><a href=''>Rendez-vous</a></li>";
                         echo "<li><a href='userprofile.php'>Votre Compte</a></li>";
                     }
                 ?>

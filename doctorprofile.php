@@ -1,4 +1,6 @@
 <?php
+    ini_set('session.cache_limiter','public');
+    session_cache_limiter(false);
     include 'header.php';
 ?>
 
@@ -44,46 +46,42 @@
 
 ?>
 </center>
+    
 <center>
-<?php
-
-    $doctorid = $row['medecinid'];
-    $dates = getDates($conn, $doctorid);
-    //echo date("l jS \of F") . "<br>";
-    echo "<br><br><table class='blueTable' >";
-    echo "<thead>";
-    echo "<tr>";
-    echo "<td>Date</td>";
-    echo "<td>Heures</td>";
-    echo "</tr>";
-    echo "</thead>";
-    echo "<tbody>";
-    while ($row = $dates->fetch_assoc()) {
-        echo "<tr>";
-        echo "<td>".$row['date']."</td>";
-        $heures = getHours($conn, $doctorid, $row['date']);
-        while ($col = $heures->fetch_assoc())
-        {
-            echo "<td>";
-            echo "<form method='POST' action = 'doctorprofile.php'>";
-            if(!$col['taken'])
-            {
-                echo "<input type='hidden' name='id' value=".$col["creneauid"].">";
-                echo "<button class='btnmedecin' type='submit' name ='medecin'>".$col['heuredebut']."</button>";
-            }
-            
-            echo "</form>";
-            echo "</td>";
-        }
-
-        echo "</tr>";
-    }
-
-
-    echo "</tbody>";
-    echo "</table>";
-?>
+    <br>
+    <table class="blueTable">
+        <tbody>
+            <tr>
+                <td>
+                    <form method="POST" action="rdv.php">
+                        <?php
+                            echo "<input type='hidden' name='id' value=".$doctoruserid.">";
+                            echo "<button class='btnmedecin' type='submit' name ='rdv'>Prendre un RDV</button>";
+                        ?>
+                    </form>
+                </td>
+                <td>
+                    <form method="POST">
+                        <?php
+                            echo "<input type='hidden' name='id' value=".$doctoruserid.">";
+                            echo "<button class='btnmedecin' type='submit' name ='chat'>Chat</button>";
+                        ?>
+                    </form>
+                </td>
+                <td>
+                    <form method="POST">
+                        <?php
+                            echo "<input type='hidden' name='id' value=".$doctoruserid.">";
+                            echo "<button class='btnmedecin' type='submit' name ='rdv'>Voir son CV</button>";
+                        ?>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </center>
+
+
 
 </div>
 <?php

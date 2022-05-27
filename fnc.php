@@ -147,6 +147,47 @@ function insertUser($conn, $name,$surname,$mail,$password, $usertype)
     
 }
 
+function setTaken($conn, $creneauid ,$taken)
+{
+
+    $qry = "UPDATE creneaux SET creneaux.taken = ? WHERE creneaux.creneauid = ?";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $qry))
+    {
+        header("location: search.php?error=stmtErrorsettaken");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "is",$taken, $creneauid);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+}
+
+function insertRdv($conn, $creneauid)
+{
+    session_start();
+    $id = $_SESSION["userid"];
+
+    $qry = "INSERT INTO rdv (rdv.rdvid, rdv.creneauid, rdv.userid) VALUES(UUID(),?,?)";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $qry))
+    {
+        header("location: search.php?error=stmtErrorinsert");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "ss", $creneauid, $id);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+    setTaken($conn, $creneauid, 1);
+
+    header("location: mesrendezvous.php?error=none,");
+    exit();
+    
+}
+
+
 function insertMedecin($conn, $name,$surname,$mail,$password, $usertype, $specialite)
 {
     insertUser($conn, $name,$surname,$mail,$password, $usertype);
@@ -175,6 +216,14 @@ function insertMedecin($conn, $name,$surname,$mail,$password, $usertype, $specia
     
 }
 
+function medecinList($conn)
+{
+    session_start();
+    $qry = "SELECT medecin.medecinid FROM medecin INNER JOIN creneaux ON medecin.medecinid =  creneaux.medecinid INNER JOIN rdv ON rdv.creneauid = creneau.creneauid WHERE rdv.userid='".$_SESSION["userid"]."'";
+    $data = mysqli_query($conn, $qry);
+    return $data;
+}
+
 function updateSession($conn)
 {
     $infos = $_SESSION['all_infos'];
@@ -184,6 +233,7 @@ function updateSession($conn)
         
         $_SESSION['all_infos'] = $_row;
         $_SESSION['userid'] = ['userid'];
+        $_SESSION['usertype'] = ['usertype'];
         $_SESSION['name'] = ['name'];
         $_SESSION['surname'] = ['surname'];
     }
