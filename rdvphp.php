@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_POST["medecin"]))
+if(isset($_POST["medecin"]) && isset($_SESSION["userid"]))
 {
     require_once 'dbhandle.php';
     require_once 'fnc.php';
@@ -10,6 +10,6 @@ if(isset($_POST["medecin"]))
 }
 else
 {
-    header("location: search.php?error=submitError");
+    header("location: signin.php?error=submitError");
     exit();
 }
