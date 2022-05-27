@@ -29,7 +29,7 @@
                 <?php
                     if(isset($_SESSION["userid"]))
                     {
-                        echo "<li><a href=''>Rendez-vous</a></li>";
+                        echo "<li><a href='mesrendezvous.php'>Rendez-vous</a></li>";
                         echo "<li><a href='userprofile.php'>Votre Compte</a></li>";
                     }
                 ?>

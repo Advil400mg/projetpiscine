@@ -58,9 +58,23 @@ function getDates($conn, $doctorid)
     return $data;
 }
 
+function getRdvDates($conn, $doctorid)
+{
+    $qry = "SELECT creneaux.date FROM creneaux INNER JOIN medecin ON creneaux.medecinid = medecin.medecinid INNER JOIN rdv ON creneaux.creneauid = rdv.creneauid WHERE medecin.medecinid='".$doctorid."'AND rdv.userid = '".$_SESSION["userid"]."' GROUP BY creneaux.date ORDER BY creneaux.date";
+    $data = mysqli_query($conn, $qry);
+    return $data;
+}
+
 function getHours($conn, $doctorid, $date)
 {
     $qry = "SELECT creneaux.creneauid, creneaux.heuredebut, creneaux.taken FROM creneaux INNER JOIN medecin ON creneaux.medecinid = medecin.medecinid WHERE medecin.medecinid='".$doctorid."'AND creneaux.date = '".$date."' ORDER BY creneaux.heuredebut";
+    $data = mysqli_query($conn, $qry);
+    return $data;
+}
+
+function getRdvHours($conn, $doctorid, $date)
+{
+    $qry = "SELECT creneaux.creneauid, creneaux.heuredebut, creneaux.taken FROM creneaux INNER JOIN medecin ON creneaux.medecinid = medecin.medecinid INNER JOIN rdv ON creneaux.creneauid = rdv.creneauid WHERE medecin.medecinid='".$doctorid."'AND creneaux.date = '".$date."'AND rdv.userid = '".$_SESSION["userid"]."' ORDER BY creneaux.heuredebut";
     $data = mysqli_query($conn, $qry);
     return $data;
 }
@@ -182,9 +196,20 @@ function insertRdv($conn, $creneauid)
 
     setTaken($conn, $creneauid, 1);
 
-    header("location: mesrendezvous.php?error=none,");
+    header("location: mesrendezvous.php?error=none");
     exit();
     
+}
+
+function deleteRDV($conn, $creneauid)
+{
+    $qry = "DELETE FROM rdv WHERE rdv.creneauid = '".$creneauid."'";
+    mysqli_query($conn, $qry);
+    setTaken($conn, $creneauid, 0);
+
+    header("location: mesrendezvous.php?error=none");
+    exit();
+
 }
 
 
@@ -218,8 +243,7 @@ function insertMedecin($conn, $name,$surname,$mail,$password, $usertype, $specia
 
 function medecinList($conn)
 {
-    session_start();
-    $qry = "SELECT medecin.medecinid FROM medecin INNER JOIN creneaux ON medecin.medecinid =  creneaux.medecinid INNER JOIN rdv ON rdv.creneauid = creneau.creneauid WHERE rdv.userid='".$_SESSION["userid"]."'";
+    $qry = "SELECT medecin.userid, medecin.medecinid FROM medecin INNER JOIN creneaux ON medecin.medecinid =  creneaux.medecinid INNER JOIN rdv ON rdv.creneauid = creneaux.creneauid WHERE rdv.userid='".$_SESSION["userid"]."' GROUP BY medecin.userid";
     $data = mysqli_query($conn, $qry);
     return $data;
 }
@@ -230,12 +254,14 @@ function updateSession($conn)
     $_row = checkUser($conn, $infos['mail']);
     if($_row !== false)
     {
-        
+        session_unset();
+        session_destroy();
+        session_start();
         $_SESSION['all_infos'] = $_row;
-        $_SESSION['userid'] = ['userid'];
-        $_SESSION['usertype'] = ['usertype'];
-        $_SESSION['name'] = ['name'];
-        $_SESSION['surname'] = ['surname'];
+        $_SESSION['userid'] = $_row['userid'];
+        $_SESSION['usertype'] = $_row['usertype'];
+        $_SESSION['name'] = $_row['name'];
+        $_SESSION['surname'] = $_row['surname'];
     }
 }
 
@@ -325,6 +351,7 @@ function checkConnection($conn, $email, $password)
        $_SESSION["userid"] = $info["userid"];
        $_SESSION["name"] = $info["name"];
        $_SESSION["surname"] = $info["surname"];
+       $_SESSION['usertype'] = $info['usertype'];
        $_SESSION["all_infos"] = $info;
        header("location: index.php");
        exit();

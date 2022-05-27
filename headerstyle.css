@@ -42,6 +42,7 @@ header{
 
 button{
     padding: 9px 25px;
+    margin-left: 10px;
     background-color: rgba(0, 136, 169, 1);
     border: none;
     border-radius: 50px;
@@ -49,8 +50,19 @@ button{
     transition: all 0.3s ease 0s;
 }
 
-
-
 button:hover{
     background-color: rgba(0, 136, 169, 0.6);
 }
+
+.btncancel
+{
+    
+    background-color: rgb(169, 39, 0);
+}
+
+.btncancel:hover{
+    background-color: rgba(169, 39, 0, 0.6);
+}
+
+
+
