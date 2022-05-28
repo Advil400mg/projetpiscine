@@ -71,6 +71,7 @@ function post() {
 
     $("#usermsg").val("");
 
+
 }
 </script>
 

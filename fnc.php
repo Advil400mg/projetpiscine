@@ -67,6 +67,29 @@ function searchBar($conn, $recherche)
     return $data;
 }
 
+function searchA($conn)
+{
+    $qry = "SELECT * FROM user INNER JOIN medecin ON user.userid = medecin.userid WHERE medecin.specialite = 'Generaliste'";
+    $data = mysqli_query($conn, $qry);
+    return $data;
+}
+
+function searchB($conn)
+{
+    $qry = "SELECT * FROM user INNER JOIN medecin ON user.userid = medecin.userid WHERE medecin.specialite <> 'Generaliste' AND medecin.specialite <> 'I.S.T'";
+    $data = mysqli_query($conn, $qry);
+    return $data;
+}
+
+function searchC($conn)
+{
+    $qry = "SELECT * FROM user INNER JOIN medecin ON user.userid = medecin.userid WHERE medecin.specialite = 'I.S.T'";
+    $data = mysqli_query($conn, $qry);
+    return $data;
+}
+
+
+
 function checkDoctor($conn, $doctorid)
 {
     $qry = "SELECT * FROM user INNER JOIN medecin ON user.userid = medecin.userid WHERE user.userid='".$doctorid."'";

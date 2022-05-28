@@ -151,7 +151,7 @@
   color: #d9d9d9;
   margin-top: 90px;
   font-weight: bold;
- font-size: 30px;
+  font-size: 30px;
 }
 
 .bienvenu {
@@ -196,10 +196,11 @@
 }
 
 .buttontitle{
-  padding: 9px 25px;
+    padding: 9px 25px;
     background-color: rgba(0, 136, 169, 1);
     border: none;
     border-radius: 50px;
+    outline: none;
     cursor: pointer;
     transition: all 0.3s ease 0s;
 }

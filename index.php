@@ -20,8 +20,8 @@
   <br>
   <br>
   <div>
-    <a href = "event.php"><button type="buttontitle"><span></span>Évènement de la semaine</button></a>
-    <a href ="bulletin.php"><button type="buttontitle"><span></span>Bulletin de la semaine</button></a>
+    <a href ="event.php"><button>Évènement de la semaine</button></a>
+    <a href ="bulletin.php"><button>Bulletin de la semaine</button></a>
   </div>
   </div>
 

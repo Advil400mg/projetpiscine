@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="styles1.css">
     <link rel="stylesheet" href="chat.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
     <title>Test hébergement</title>
@@ -24,17 +24,22 @@
         <img class="logo" src="img/logo.jpg" width = "120px" height = "48px" alt="logo">
         <nav>
             <ul class = "menu">
-                <li><a href="ajoutmedecin.php">Medadd</a></li>
+                
                 <li><a href="index.php">Accueil</a></li>
                 <li><a href="browser.php">Tout Parcourir</a></li>
                 <li><a href="search.php">Recherche</a></li>
 
                 <?php
-                    if(isset($_SESSION["userid"]))
+                    if(isset($_SESSION["userid"]) && $_SESSION["usertype"]!=3)
                     {
                         echo "<li><a href='mesrendezvous.php'>Rendez-vous</a></li>";
                         echo "<li><a href='userprofile.php'>Votre Compte</a></li>";
                     }
+                    if(isset($_SESSION["userid"]) && $_SESSION["usertype"]==3)
+                    {
+                        echo "<li><a href='ajoutmedecin.php'>Medadd</a></li>";
+                    }
+                    
                 ?>
             </ul>
         </nav>
