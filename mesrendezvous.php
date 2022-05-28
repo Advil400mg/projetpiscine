@@ -102,11 +102,13 @@
                         echo "<label name ='medecin' margin='10px' margin-bottom='20px'>".$col['name']." ".$col['surname']." ".$col['heuredebut']."</label><br>";
                         echo "<label name ='medecin' margin='10px' margin-bottom='20px'>-------------------</label>";
                         echo "<form method='POST' action = 'chatroom.php' >";
-                        
-                        echo "<input type='hidden' name='id' value=".$col["name"].">";
-                        echo "<input type='hidden' name='id' value=".$col["surname"].">";
+                        echo "<input type='hidden' name='usernma' value=".$col["name"].">";
+                        echo "<input type='hidden' name='usersurname' value=".$col["surname"].">";
                         echo "<input type='hidden' name='id' value=".$col["userid"].">";
-                        echo "<button name ='medecin' margin='10px' color='black'>Chat</button>";
+                        echo "<button type='submit' name='chat' margin='10px' color='black'>Chat</button>";
+                        echo "</form>";
+                        echo "<form method='POST' action = 'deleterdv.php' >";
+                        echo "<input type='hidden' name='id' value=".$col["creneauid"].">";
                         echo "<button class='btncancel' type='submit' name ='medecin' margin='10px'>Annuler</button>";
                         echo "</form>";                    
                     }

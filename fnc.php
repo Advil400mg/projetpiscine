@@ -37,6 +37,29 @@ function emptyFormSI($mail,$password)
     return $result;
 }
 
+function getmessages($conn, $user1id, $user2id)
+{
+    $qry = "SELECT * FROM textos WHERE ( textos.user1='".$user1id."' AND textos.user2='".$user2id."') OR ( textos.user1='".$user2id."' AND textos.user2='".$user1id."') ORDER BY textos.textoid";
+    $data = mysqli_query($conn, $qry);
+    return $data;
+}
+
+function insertmsg($conn, $user1id, $user2id, $msg)
+{
+    $qry = "INSERT INTO textos (textos.user1, textos.user2, textos.msg) VALUES(?,?,?)";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $qry))
+    {
+        header("location: signup.php?error=stmtError");
+        exit();
+    }
+    $val = 1;
+
+    mysqli_stmt_bind_param($stmt, "sss", $user1id, $user2id, $msg);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+}
+
 function searchBar($conn, $recherche)
 {
     $qry = 'SELECT * FROM user INNER JOIN medecin ON user.userid = medecin.userid WHERE user.name LIKE "%'.$recherche.'%" OR  medecin.specialite LIKE "%'.$recherche.'%" OR user.surname LIKE "%'.$recherche.'%" ORDER BY user.surname';
@@ -54,6 +77,13 @@ function checkDoctor($conn, $doctorid)
 function getDates($conn, $doctorid)
 {
     $qry = "SELECT creneaux.date FROM creneaux INNER JOIN medecin ON creneaux.medecinid = medecin.medecinid WHERE medecin.medecinid='".$doctorid."' GROUP BY creneaux.date ORDER BY creneaux.date";
+    $data = mysqli_query($conn, $qry);
+    return $data;
+}
+
+function getUserbyID($conn, $userid)
+{
+    $qry = "SELECT * FROM user WHERE user.userid='".$userid."'";
     $data = mysqli_query($conn, $qry);
     return $data;
 }
@@ -277,6 +307,7 @@ function updateSession($conn)
         $_SESSION['usertype'] = $_row['usertype'];
         $_SESSION['name'] = $_row['name'];
         $_SESSION['surname'] = $_row['surname'];
+        $_SESSION['img'] = $_row['img'];
     }
 }
 
@@ -368,6 +399,7 @@ function checkConnection($conn, $email, $password)
        $_SESSION["surname"] = $info["surname"];
        $_SESSION['usertype'] = $info['usertype'];
        $_SESSION["all_infos"] = $info;
+       $_SESSION['img'] = $info['img'];
        header("location: index.php");
        exit();
    }
