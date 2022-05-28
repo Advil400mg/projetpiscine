@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="styles1.css">
     <link rel="stylesheet" href="chat.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+
 
     <title>Test hébergement</title>
 
