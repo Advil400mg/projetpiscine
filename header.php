@@ -13,8 +13,7 @@
     <link rel="stylesheet" href="styles1.css">
     <link rel="stylesheet" href="chat.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
     <title>Test hébergement</title>
 
 </head>
@@ -27,7 +26,7 @@
                 <li><a href="index.php">Accueil</a></li>
                 <li><a href="browser.php">Tout Parcourir</a></li>
                 <li><a href="search.php">Recherche</a></li>
-                
+
                 <?php
                     if(isset($_SESSION["userid"]))
                     {

@@ -57,8 +57,9 @@
         <span class"credit">Copyright © 2022 Omnes Santé, tous droits réservés.</span>
     </center>
 </div>
-</footer>
 </div>
+</footer>
+
 </body>
 
 </html>
