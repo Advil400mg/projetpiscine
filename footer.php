@@ -18,8 +18,10 @@
         <h2>Coordonnées</h2>
         <div class="content">
             <div class="place">
-                <span class="fas fa-map-marker-alt"></span>
-                <span class="text">43 Quai de Grenelle, 75015 Paris</span>
+               <a href= " https://www.google.com/maps/place/43+Quai+de+Grenelle,+75015+Paris,+France/@48.851162,2.286428,14z/data=!4m5!3m4!1s0x47e670049543178d:0x400dcd31a8b1ba2a!8m2!3d48.851162!4d2.2864281?hl=en-GB"> 
+                   <span class="fas fa-map-marker-alt"></span></a>
+                   <a href= " https://www.google.com/maps/place/43+Quai+de+Grenelle,+75015+Paris,+France/@48.851162,2.286428,14z/data=!4m5!3m4!1s0x47e670049543178d:0x400dcd31a8b1ba2a!8m2!3d48.851162!4d2.2864281?hl=en-GB"> 
+                <span class="text">43 Quai de Grenelle, 75015 Paris</span></a>
              </div>
             <div class="phone">
             <a href="tel: 01 47 20 75 82"><span class="fas fa-phone-alt"></span></a>
@@ -33,22 +35,20 @@
     </div>
 
     <div class="right box">
-        <h2>Contactez-nous</h2>
-        <div class="content">
-            <form action="#">
-                <div class="email">
-                    <div class="text">Email *</div>
-                    <input type="email" required>
-                </div>
-                <div class="msg">
-                    <div class="text">Message *</div>
-                    <textarea rows="2" cols="25" required></textarea>
-                </div>
-                <div class="btn">
-                    <button type="submit">Send</button>
-                </div>
-            </form>
-        </div>
+    <div class="map">
+                <iframe width="300" height="200" id="gmap_canvas" src="https://maps.google.com/maps?q=43%20quai%20de%20grennelle%20patis%2015&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" >
+
+                </iframe><a href="https://123movies-to.org/%22%3E"></a>
+                    <br>
+                    <style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}
+
+                </style><a href="https://www.embedgooglemap.net/%22%3Eembedding" a google map></a>
+                <style>.gmap_canvas
+                 {overflow:hidden;background:none!important;height:400px;
+                width:600px;}
+            </style>
+            </div></div>
+    </div>
     </div>
 
 </div>  
@@ -57,8 +57,8 @@
         <span class"credit">Copyright © 2022 Omnes Santé, tous droits réservés.</span>
     </center>
 </div>
+
 </footer>
-</div>
 </body>
 
 </html>
