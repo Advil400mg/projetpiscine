@@ -3,8 +3,9 @@
 ?>
 
 <div class="wrapper">
+    <center>
     <div class="head">
-        <h2>ROMANE</h2>
+        <h2>Votre Compte</h2>
     </div>
     <section class="update-user-forms">
         <section class="update1-user-form">
@@ -80,6 +81,7 @@
             </form>
         </section>
     </section>
+                </center>
 
 </div>
 

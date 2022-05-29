@@ -21,9 +21,6 @@
     echo $contenu->info->ob1;
 ?>
 
-
-
-
 <div class="wrapper">
     <center>
         <h1>Formations et expériences</h1><br>
