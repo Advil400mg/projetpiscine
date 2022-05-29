@@ -9,7 +9,7 @@
 <?php
     if(!isset($_POST["medecin"]))
     {
-        header("location : searchbar.php?error=doctorNotFound");
+        header("location: searchbar.php?error=doctorNotFound");
         exit();
     }
     require_once 'dbhandle.php';
@@ -79,10 +79,10 @@
                     </form>
                 </td>
                 <td>
-                    <form method="POST">
+                    <form method="POST" action="showcv.php">
                         <?php
-                            echo "<input type='hidden' name='id' value=".$doctoruserid.">";
-                            echo "<button class='btnmedecin' type='submit' name ='rdv'>Voir son CV</button>";
+                            echo "<input type='hidden' name='id' value=".$doctorid.">";
+                            echo "<button class='btnmedecin' type='submit' name ='showcv'>Voir son CV</button>";
                         ?>
                     </form>
                 </td>
@@ -93,6 +93,12 @@
                     echo "<form method='POST' action='ajoutdispo.php'>";
                         echo "<input type='hidden' name='id' value=".$doctorid.">";
                         echo "<button class='btnmedecin' type='submit' name ='rdv'>Ajouter disponibilités</button>";
+                    echo "</form>";
+                    echo "</td>";
+                    echo "<td>";
+                    echo "<form method='POST' action='createxml.php'>";
+                        echo "<input type='hidden' name='id' value=".$doctorid.">";
+                        echo "<button class='btnmedecin' type='submit' name ='xml'>Créer CV</button>";
                     echo "</form>";
                     echo "</td>";
 

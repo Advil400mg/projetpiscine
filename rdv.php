@@ -9,7 +9,7 @@
 <?php
     if(!isset($_POST["rdv"]))
     {
-        header("location : searchbar.php?error=doctorNotFound");
+        header("location: searchbar.php?error=doctorNotFound");
         exit();
     }
     require_once 'dbhandle.php';

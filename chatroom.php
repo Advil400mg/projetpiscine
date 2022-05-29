@@ -7,7 +7,7 @@
 
     if(!isset($_POST["chat"]) && $_SESSION["usertype"]!=2)
     {
-        header("location : search.php?error=chaterror");
+        header("location: search.php?error=chaterror");
         exit();
     }
     elseif(!isset($_POST["chat"]) && $_SESSION["usertype"] == 2)

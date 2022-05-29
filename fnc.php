@@ -378,6 +378,7 @@ function updateSession($conn)
         $_SESSION['usertype'] = $_row['usertype'];
         $_SESSION['name'] = $_row['name'];
         $_SESSION['surname'] = $_row['surname'];
+        $_SESSION['mail'] = $_row['mail'];
         $_SESSION['img'] = $_row['img'];
     }
 }
@@ -469,6 +470,7 @@ function checkConnection($conn, $email, $password)
        $_SESSION["name"] = $info["name"];
        $_SESSION["surname"] = $info["surname"];
        $_SESSION['usertype'] = $info['usertype'];
+       $_SESSION['mail'] = $info['mail'];
        $_SESSION["all_infos"] = $info;
        $_SESSION['img'] = $info['img'];
        header("location: index.php");
