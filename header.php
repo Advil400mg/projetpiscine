@@ -16,7 +16,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
-    <title>Test hébergement</title>
+    <title>Doctomnes</title>
 
 </head>
 <body>
@@ -53,6 +53,10 @@
                 {
                     echo "<a class='signin' href='signin.php'><button>Sign In</button></a>";
                     echo "<a class='signup' href='signup.php'><button>Sign Up</button></a>";
+                }
+                if(isset($_SESSION["userid"]) && $_SESSION["usertype"]==2)
+                {
+                    echo "<a class='signup' href='chatroom.php'><button>Contacter l'admin</button></a>";
                 }
             ?>
             

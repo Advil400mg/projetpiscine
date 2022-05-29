@@ -17,6 +17,7 @@
     $doctoruserid = $_POST["id"];
     $data = checkDoctor($conn, $doctoruserid);
     $row = $data->fetch_assoc();
+    $doctorid = $row["medecinid"];
     
     echo "<br><table class='blueTable' >";
     echo "<thead>";
@@ -64,7 +65,7 @@
                     <form method="POST" action="chatroom.php">
                         <?php
                             echo "<input type='hidden' name='id' value=".$doctoruserid.">";
-                            if(isset($_SESSION["usertype"]) && $_SESSION["usertype"]==1)
+                            if(isset($_SESSION["usertype"]) && $_SESSION["usertype"]!=2)
                             {
                                 echo "<button class='btnmedecin' type='submit' name ='chat'>Chat</button>";
                             }
@@ -84,6 +85,18 @@
                         ?>
                     </form>
                 </td>
+                <?php
+                if(isset($_SESSION["usertype"]) && $_SESSION["usertype"]==3)
+                {
+                    echo "<td>";
+                    echo "<form method='POST' action='ajoutdispo.php'>";
+                        echo "<input type='hidden' name='id' value=".$doctorid.">";
+                        echo "<button class='btnmedecin' type='submit' name ='rdv'>Ajouter disponibilités</button>";
+                    echo "</form>";
+                    echo "</td>";
+
+                }
+                ?>
             </tr>
         </tbody>
     </table>

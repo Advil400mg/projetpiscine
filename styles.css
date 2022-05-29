@@ -200,7 +200,7 @@
     background-color: rgba(0, 136, 169, 1);
     border: none;
     border-radius: 50px;
-    outline: none;
+    
     cursor: pointer;
     transition: all 0.3s ease 0s;
 }

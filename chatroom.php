@@ -5,13 +5,21 @@
     require_once 'dbhandle.php';
     require_once 'fnc.php';
 
-    if(!isset($_POST["chat"]))
+    if(!isset($_POST["chat"]) && $_SESSION["usertype"]!=2)
     {
         header("location : search.php?error=chaterror");
         exit();
     }
+    elseif(!isset($_POST["chat"]) && $_SESSION["usertype"] == 2)
+    {
+        $user1id = "4260bebf-dec3-11ec-b477-3c7c3fd3773d";
+    }
+    else
+    {
+        $user1id = $_POST["id"];
+    }
 
-    $user1id = $_POST["id"];
+    
     $user2id = $_SESSION["userid"];
 
 

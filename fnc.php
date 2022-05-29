@@ -60,6 +60,54 @@ function insertmsg($conn, $user1id, $user2id, $msg)
     mysqli_stmt_close($stmt);
 }
 
+function insertCreneau($conn, $docid ,$deb, $fin, $date,$salle)
+{
+    $date = date('Y-m-d', strtotime( $date));
+    $deb = date('H:i:s',strtotime($deb));
+    $fin = date('H:i:s',strtotime($fin));
+    echo $docid;
+    $qry = "SELECT * FROM creneaux WHERE creneaux.medecinid = ? AND salle = ? AND creneaux.date = ? AND (heuredebut BETWEEN ? AND ? OR heurefin BETWEEN ? AND ?)";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $qry))
+    {
+        header("location: signup.php?error=stmtError");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "sssssss",$docid,$salle,$date, $deb,$fin, $deb,$fin);
+    mysqli_stmt_execute($stmt);
+    $result = $stmt->get_result();
+    mysqli_stmt_close($stmt);
+
+    if(!empty($result->fetch_assoc()))
+    {
+        header("location: signup.php?error=allreadytaken");
+        exit();
+    }
+
+
+
+    $qry = "INSERT INTO creneaux (creneaux.creneauid, creneaux.medecinid, creneaux.date, creneaux.heuredebut, creneaux.heurefin, creneaux.taken, creneaux.salle) VALUES(UUID(),?,?,?,?,?,?)";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $qry))
+    {
+        header("location: signup.php?error=stmtError");
+        exit();
+    }
+
+    $taken = 0;
+
+    mysqli_stmt_bind_param($stmt, "ssssis",$docid,$date,$deb, $fin,$taken,$salle);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+    if(!mysqli_stmt_prepare($stmt, $qry))
+    {
+        header("location: signup.php?error=rdvajoute");
+        exit();
+    }
+
+}
+
 function searchBar($conn, $recherche)
 {
     $qry = 'SELECT * FROM user INNER JOIN medecin ON user.userid = medecin.userid WHERE user.name LIKE "%'.$recherche.'%" OR  medecin.specialite LIKE "%'.$recherche.'%" OR user.surname LIKE "%'.$recherche.'%" ORDER BY user.surname';

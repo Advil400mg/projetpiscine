@@ -11,8 +11,8 @@
                 <a href="https://www.instagram.com"><span class="fab fa-instagram"></span></a>
                 <a href="https://www.youtube.com"><span class="fab fa-youtube"></span></a>
             </div>
-        </div>    
-    </div>  
+        </div>
+    </div>
 
     <div class="center box">
         <h2>Coordonnées</h2>
