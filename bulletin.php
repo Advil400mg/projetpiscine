@@ -14,7 +14,7 @@
         <div class="right">
             <p class="date">Mai, 28, 2022 </p>
             <br>
-            <h1>Covid-19 en France : 4.811 nouveaux cas, les hospitalisations en baisseé</h1>
+            <h1>Covid-19 en France : 4.811 nouveaux cas, les hospitalisations en baisse</h1>
             <br>
             <p class="description">4.811 nouvelles contaminations ont été enregistrées dans l'Hexagone, entre jeudi 26 et vendredi 27 mai 2022, selon les autorités sanitaires. Un chiffre en nette baisse par rapport à la veille (21.234) mais aussi comparé au vendredi précédent (24.332). Sur les sept derniers jours, le nombre de cas positifs diagnostiqués est toujours en nette diminution, de 33,01 %, avec désormais 17.771 contaminations en moyenne par jour. Toutefois cette baisse est à prendre avec précaution car il y a eu nettement moins de tests en ce jeudi de l'Ascension, férié. 
             </p>

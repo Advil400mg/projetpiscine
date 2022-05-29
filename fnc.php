@@ -70,7 +70,7 @@ function insertCreneau($conn, $docid ,$deb, $fin, $date,$salle)
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $qry))
     {
-        header("location: signup.php?error=stmtError");
+        header("location: search.php?error=stmtError");
         exit();
     }
     mysqli_stmt_bind_param($stmt, "sssssss",$docid,$salle,$date, $deb,$fin, $deb,$fin);
@@ -80,7 +80,7 @@ function insertCreneau($conn, $docid ,$deb, $fin, $date,$salle)
 
     if(!empty($result->fetch_assoc()))
     {
-        header("location: signup.php?error=allreadytaken");
+        header("location: search.php?error=allreadytaken");
         exit();
     }
 
@@ -90,7 +90,7 @@ function insertCreneau($conn, $docid ,$deb, $fin, $date,$salle)
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $qry))
     {
-        header("location: signup.php?error=stmtError");
+        header("location: search.php?error=stmtError");
         exit();
     }
 
@@ -102,7 +102,7 @@ function insertCreneau($conn, $docid ,$deb, $fin, $date,$salle)
 
     if(!mysqli_stmt_prepare($stmt, $qry))
     {
-        header("location: signup.php?error=rdvajoute");
+        header("location: search.php?error=rdvajoute");
         exit();
     }
 

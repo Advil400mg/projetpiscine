@@ -18,6 +18,7 @@
     $data = checkDoctor($conn, $doctoruserid);
     $row = $data->fetch_assoc();
     $doctorid = $row["medecinid"];
+    $doctormail = $row["mail"];
     
     echo "<br><table class='blueTable' >";
     echo "<thead>";
@@ -96,6 +97,8 @@
                     echo "</td>";
 
                 }
+                echo "<a href='"."mailto:".$doctormail."'><span class='text'>Contacter par mail</span></a>";
+
                 ?>
             </tr>
         </tbody>
